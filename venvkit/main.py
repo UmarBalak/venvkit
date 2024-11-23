@@ -183,7 +183,7 @@ def help():
     Python Virtual Environment Manager
 
     Usage:
-      vm [command] <args>
+      vk [command] <args>
 
     Commands:
       list [base_dir1] [base_dir2] ...   List all virtual environments in the specified directories.
@@ -199,19 +199,19 @@ def help():
       help                                 Display this help message.
 
     Examples:
-      vm list                             Lists all virtual environments in the current directory.
-      vm list ~/projects /path/to/another_dir
+      vk list                             Lists all virtual environments in the current directory.
+      vk list ~/projects /path/to/another_dir
                                          Lists virtual environments in the specified directories.
-      vm create myenv                    Creates a virtual environment named 'myenv' in the current directory.
-      vm create myenv ~/projects         Creates 'myenv' in the '~/projects' directory.
-      vm delete ~/projects/myenv         Deletes the virtual environment at '~/projects/myenv'.
-      vm info ~/projects/myenv           Displays information about the virtual environment at '~/projects/myenv'.
+      vk create myenv                    Creates a virtual environment named 'myenv' in the current directory.
+      vk create myenv ~/projects         Creates 'myenv' in the '~/projects' directory.
+      vk delete ~/projects/myenv         Deletes the virtual environment at '~/projects/myenv'.
+      vk info ~/projects/myenv           Displays information about the virtual environment at '~/projects/myenv'.
     """
     print(help_message)
 
-def venvkit_run():
+def main():
     if len(sys.argv) < 2:
-        print("Usage: vm [list|create|delete|info|help] <args>")
+        print("Usage: vk [list|create|delete|info|help] <args>")
         print("  list [base_dir1, base_dir2, ...]     - List all virtual environments in specified directories.")
         print("  create <env_name> [base_dir]         - Create a new virtual environment with the given name.")
         print("  delete <venv_path>                   - Delete the virtual environment at the specified path.")
@@ -226,7 +226,7 @@ def venvkit_run():
     
     elif command == "info":
         if len(sys.argv) < 3:
-            print("Usage: vm info <venv_path>")
+            print("Usage: vk info <venv_path>")
             print("Please provide a path to the virtual environment.")
         else:
             venv_path = sys.argv[2]
@@ -239,7 +239,7 @@ def venvkit_run():
 
     elif command == "create":
         if len(sys.argv) < 3:
-            print("Usage: vm create <env_name> [base_dir]")
+            print("Usage: vk create <env_name> [base_dir]")
             print("Please provide a name for the virtual environment.")
         else:
             env_name = sys.argv[2]
@@ -248,7 +248,7 @@ def venvkit_run():
     
     elif command == "delete":
         if len(sys.argv) != 3:
-            print("Usage: vm delete <venv_path>")
+            print("Usage: vk delete <venv_path>")
             print("Please provide the path of the virtual environment to delete.")
         else:
             venv_path = sys.argv[2]
@@ -256,5 +256,7 @@ def venvkit_run():
     
     else:
         print(f"Unknown command: {command}")
-        print("Usage: vm [list|create|delete|info|help] <args>")
+        print("Usage: vk [list|create|delete|info|help] <args>")
 
+if __name__ == "__main__":
+    main()
